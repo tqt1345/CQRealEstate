@@ -11,7 +11,36 @@ public class Land {
         this.address = address;
         this.landArea = landArea;
     }
-    public setLotNumber(int lotNumber){
 
+    // lotNumber setter
+    public void setLotNumber(int lotNumber) {
+        this.lotNumber = lotNumber;
     }
+
+    // address setter
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    // landArea setter
+    public void setLandArea(float landArea) {
+        this.landArea = landArea;
+    }
+
+    // lotNumber getter
+    public int getLotNumber() {
+        return lotNumber;
+    }
+
+    // address getter
+    public String getAddress() {
+        return address;
+    }
+
+    // landArea getter
+    public float getLandArea() {
+        return landArea;
+    }
+
+
 }

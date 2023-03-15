@@ -1,2 +1,3 @@
-public class HouseAndLand {
+public class HouseAndLand extends Land{
+
 }
