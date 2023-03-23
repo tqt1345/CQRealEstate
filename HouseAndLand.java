@@ -1,5 +1,7 @@
-public class HouseAndLand extends Land{
-    private double houseArea; // houseArea to be in meters squared
+public class HouseAndLand extends Property{
+
+    // HouseAndLand attributes
+    private double houseArea;
     private int bedrooms;
     private int bathrooms;
 
@@ -9,21 +11,6 @@ public class HouseAndLand extends Land{
         this.houseArea = houseArea;
         this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
-    }
-
-    // lotNumber setter
-    public void setLotNumber(int lotNumber) {
-        super.setLotNumber(lotNumber);
-    }
-
-    // address setter
-    public void setAddress(String address) {
-        super.setAddress(address);
-    }
-
-    // landArea setter
-    public void setLandArea(float landArea) {
-        super.setLandArea(landArea);
     }
 
     // houseArea setter
@@ -41,21 +28,6 @@ public class HouseAndLand extends Land{
         this.bathrooms = bathrooms;
     }
 
-    // lotNumber getter
-    public int getLotNumber() {
-        return super.getLotNumber();
-    }
-
-    // address getter
-    public String getAddress() {
-        return super.getAddress();
-    }
-
-    // landArea getter
-    public double getLandArea() {
-        return super.getLandArea();
-    }
-
     // houseArea getter
     public double getHouseArea() {
         return houseArea;
@@ -66,13 +38,5 @@ public class HouseAndLand extends Land{
         return bedrooms;
     }
 
-    // bathrooms getter
-    public int getBathrooms() {
-        return bathrooms;
-    }
-
-
-
-
-
+    // TODO toString method
 }
