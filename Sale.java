@@ -80,5 +80,5 @@ public class Sale {
     }
 
     // TODO toString method
-    
+
 }
