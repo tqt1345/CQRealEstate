@@ -1,42 +1,55 @@
-public class HouseAndLand extends Property{
+public class HouseAndLand extends Land {
 
-    // HouseAndLand attributes
-    private double houseArea;
+    public int houseAndLandId = 1;
+    private double constructedArea;
     private int bedrooms;
-    private int bathrooms;
+    private int toilets;
 
-    // HouseAndLand constructor
-    public HouseAndLand(int lotNumber, String address, double landArea, double houseArea, int bedrooms, int bathrooms) {
+    public HouseAndLand(int lotNumber, String address, double landArea, double constructedArea, int bedrooms, int toilets) {
         super(lotNumber, address, landArea);
-        this.houseArea = houseArea;
+        this.constructedArea = constructedArea;
         this.bedrooms = bedrooms;
-        this.bathrooms = bathrooms;
+        this.toilets = toilets;
     }
 
-    // houseArea setter
-    public void setHouseArea(double houseArea) {
-        this.houseArea = houseArea;
+    public void incrementHouseAndLandId(){
+        houseAndLandId++;
     }
 
-    // bedrooms setter
+    // constructedArea setter and getter
+    public void setConstructedArea(double constructedArea) {
+        this.constructedArea = constructedArea;
+    }
+
+    public double getConstructedArea() {
+        return constructedArea;
+    }
+
+    // bedrooms setter and getter
     public void setBedrooms(int bedrooms) {
         this.bedrooms = bedrooms;
     }
 
-    // bathrooms setter
-    public void setBathrooms(int bathrooms) {
-        this.bathrooms = bathrooms;
-    }
-
-    // houseArea getter
-    public double getHouseArea() {
-        return houseArea;
-    }
-
-    // bedrooms getter
     public int getBedrooms() {
         return bedrooms;
     }
 
-    // TODO toString method
+    // toilets setter and getter
+    public void setToilets(int toilets) {
+        this.toilets = toilets;
+    }
+
+    public int getToilets() {
+        return toilets;
+    }
+
+    @Override
+    public String toString(){
+        return "House and Land ID: " + houseAndLandId
+                + super.toString()
+                + " Constructed area: " + constructedArea
+                + " Bedrooms: " + bedrooms
+                + " Toilets: " + toilets;
+    }
+
 }

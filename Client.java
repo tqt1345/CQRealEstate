@@ -1,5 +1,6 @@
 public class Client {
 
+    // Client attributes
     private int clientID;
     private String name;
     private String address;
