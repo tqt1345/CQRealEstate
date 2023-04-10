@@ -9,102 +9,56 @@ public class Main {
     ArrayList<Land> landList = new ArrayList<Land>();
     ArrayList<HouseAndLand> houseAndLandList = new ArrayList<HouseAndLand>();
 
+    // Interactive menu
+    public void menu() {
+        
+    }
+
 
     // Add a new Land object to the array
     public void addLand() {
         // Get land attributes
-        int lotNumber = requestLotNumber();
-        String address = requestAddress();
-        double landArea = requestLandArea();
+        int lotNumber = Validator.requestValidInt("Enter the lot number", 0);
+        String address = Validator.requestValidString("Enter the address", 0);
+        double landArea = Validator.requestValidDouble("Enter the land area", 0);
 
         // Create new land object and add it to the array
         Land land = new Land(lotNumber, address, landArea);
         landList.add(land);
 
         // Display inputted details for the newly created land object
-        System.out.println("You have created a new entry with the following details:");
+        clearConsole();
+        System.out.println("You have created a new entry with the following details:\n");
         System.out.println(land);
+
+        // Wait for user input before continuing to the rest of the program
+        System.out.println();
+        awaitInput();
+        clearConsole();
     }
 
-
-    // requestLotNumber asks for and validates a lotNumber
-    public int requestLotNumber() {
-        Scanner input = new Scanner(System.in);
-        int lotNumber = 0;
-        boolean isValid = false; // Flag to break loop
-
-        // Continues to request input until valid
-        while (!isValid) {
-            System.out.println("Enter the lot number: ");
-            if (input.hasNextInt()) { // Checks if input is an integer
-                lotNumber = input.nextInt();
-                if (lotNumber > 0) { // Checks if input is greater than 0
-                    isValid = true; // Breaks the loop if all conditions are met
-                } else {
-                    System.out.println("lot number must be greater than 0");
-                }
-            } else {
-                System.out.println("lot number must be an integer");
-                input.next(); // Prevents infinite loop
-            }
-
-        }
-        return lotNumber;
-    }
-
-    // requestAddress asks for and validates an address
-    public String requestAddress() {
-        Scanner input = new Scanner(System.in);
-        String address = "";
-        boolean isValid = false;
-
-        // Continues to request input until valid
-        while (!isValid) {
-            System.out.println("Enter the address: ");
-            if (input.hasNextLine()) { // Checks if input is a string
-                address = input.nextLine();
-                if (address.length() > 0) { // Checks if input is greater than 0 characters
-                    isValid = true; // Breaks the loop if all conditions are met
-                } else {
-                    System.out.println("address must be greater than 0 characters");
-                }
-            } else {
-                System.out.println("address must be a string");
-                input.next(); // Prevents infinite loop
-            }
-
-        }
-        return address;
-    }
-
-    // requestLandArea asks for and validates the landArea
-    public double requestLandArea() {
-        Scanner input = new Scanner(System.in);
-        double landArea = 0;
-        boolean isValid = false; // Flag to break loop
-
-        // Continues to request input until valid
-        while (!isValid) {
-            System.out.println("Enter the land area: ");
-            if (input.hasNextDouble()) { // Checks if input is a double
-                landArea = input.nextDouble();
-                if (landArea > 0) { // Checks if input is greater than 0
-                    isValid = true; // Breaks the loop if all conditions are met
-                } else {
-                    System.out.println("land area must be greater than 0");
-                }
-            } else {
-                System.out.println("land area must be a double");
-                input.next(); // Prevents infinite loop
-            }
-
-        }
-        return landArea;
-    }
-
-    // Add a new house and land object to the array
     public void addHouseAndLand() {
+        // Get houseAndLand attributes
+        int lotNumber = Validator.requestValidInt("Enter the lot number", 0);
+        String address = Validator.requestValidString("Enter the address", 0);
+        double landArea = Validator.requestValidDouble("Enter the land area", 0);
+        double constructedArea = Validator.requestValidDouble("Enter the constructed area (must be greater than: " + landArea, landArea);
+        int bedrooms = Validator.requestValidInt("Enter the number of bedrooms", 0);
+        int toilets = Validator.requestValidInt("Enter the number of toilets", 0);
 
+        // Create new HouseAndLand object and add it to the array
+        HouseAndLand houseAndLand = new HouseAndLand(lotNumber, address, landArea, constructedArea, bedrooms, toilets);
+        houseAndLandList.add(houseAndLand);
+
+        // Display inputted details for the newly created land object
+        clearConsole();
+        System.out.println("You have created a new entry with the following details:\n");
+        System.out.println(houseAndLand);
+
+        // Wait for user input before continuing to the rest of the program
+        System.out.println();
+        awaitInput();
+        clearConsole();
     }
 
     public void displayLands() {
@@ -112,42 +66,43 @@ public class Main {
             System.out.println("No land info stored");
         } else {
             for (Land land : landList) {
-                System.out.println(land);
+                System.out.println(land + "\n");
             }
         }
 
     }
     public void displayHouseAndLands(){
+        if (houseAndLandList.isEmpty()){
+            System.out.println("No HouseAndLand info stored");
+        } else {
+            for (HouseAndLand houseAndLand : houseAndLandList) {
+                System.out.println(houseAndLand + "\n");
+            }
+        }
 
     }
 
     public void awaitInput(){
-
+        System.out.println("Press enter to continue");
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void clearConsole() {
-        try {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
-            } else {
-                Runtime.getRuntime().exec("clear");
-            }
-        } catch (final IOException e) {
-            //  Handle any exceptions.
-        }
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     public static void main(String[] args) {
         Main main = new Main();
+        main.addLand();
+        main.addHouseAndLand();
 
-        main.addLand();
-        main.addLand();
-        main.addLand();
-
+        System.out.println("Total:");
         main.displayLands();
-
-
+        main.displayHouseAndLands();
     }
 }

@@ -45,11 +45,10 @@ public class HouseAndLand extends Land {
 
     @Override
     public String toString(){
-        return "House and Land ID: " + houseAndLandId
-                + super.toString()
-                + " Constructed area: " + constructedArea
-                + " Bedrooms: " + bedrooms
-                + " Toilets: " + toilets;
+        return super.toString()
+                + "\nConstructed area: " + constructedArea
+                + "\nBedrooms: " + bedrooms
+                + "\nToilets: " + toilets;
     }
 
 }

@@ -47,9 +47,8 @@ public class Land {
 
     @Override
     public String toString(){
-        return " Land ID: " + landId
-                + " Lot number: " + lotNumber
-                + " Address: " + address
-                + " Land area: " + landArea ;
+        return "Lot number: " + lotNumber
+                + "\nAddress: " + address
+                + "\nLand area: " + landArea ;
     }
 }
