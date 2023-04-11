@@ -1,8 +1,14 @@
-public class Seller extends Client{
+public class Seller extends Client {
 
-    // Seller constructor
-    public Seller(int clientID, String name, String address, String phoneNumber) {
-        super(clientID, name, address, phoneNumber);
+    private static final String clientType = "Seller";
+    public Seller(String firstName, String lastName, String address, String phoneNumber) {
+        super(firstName, lastName, address, phoneNumber);
     }
 
+    @Override
+    public String toString() {
+        return "Client type: " + clientType
+                + "\n"
+                + super.toString();
+    }
 }

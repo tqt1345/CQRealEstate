@@ -1,6 +1,6 @@
 public class Land {
     private int landId;
-    private static int lastLandId = 0;
+    private static int lastLandId = 1;
     private int lotNumber;
     private String address;
     private double landArea;

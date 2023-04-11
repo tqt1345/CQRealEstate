@@ -12,10 +12,6 @@ public class HouseAndLand extends Land {
         this.toilets = toilets;
     }
 
-    public void incrementHouseAndLandId(){
-        houseAndLandId++;
-    }
-
     // constructedArea setter and getter
     public void setConstructedArea(double constructedArea) {
         this.constructedArea = constructedArea;
