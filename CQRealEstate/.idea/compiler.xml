@@ -9,8 +9,5 @@
         <module name="CQRealEstate" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CQRealEstate" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>
