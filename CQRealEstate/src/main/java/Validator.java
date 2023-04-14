@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Validator {
     // requestValidInt requests and validates an integer
-    public static int requestValidInt(String prompt, int min) {
+    public static int requestValidInt(String prompt, int min, int max) {
         Scanner input = new Scanner(System.in);
         int num = 0;
         boolean isValid = false; // Flag to break loop
@@ -12,7 +12,11 @@ public class Validator {
             if (input.hasNextInt()) { // Checks if input is an integer
                 num = input.nextInt();
                 if (num > min) { // Checks if number is greater than minimum needed
-                    isValid = true; // Breaks the loop if all conditions are met
+                    if (num < max) { // Checks if number is less than maximum needed
+                        isValid = true; // Breaks the loop if all conditions are met
+                    } else {
+                        System.out.println("Invalid input, must be less than: " + max);
+                    }
                 } else {
                     System.out.println("Invalid input, must be greater than: " + min);
                 }
@@ -23,8 +27,13 @@ public class Validator {
         }
         return num;
     }
+
+    // Overloaded requestValidInt method that only requires minimum value argument
+    public static int requestValidInt(String prompt, int min) {
+        return requestValidInt(prompt, min, Integer.MAX_VALUE);
+    }
     // requestValidDouble requests and validates a double
-    public static double requestValidDouble(String prompt, double min) {
+    public static double requestValidDouble(String prompt, double min, double max) {
         Scanner input = new Scanner(System.in);
         double num = 0;
         boolean isValid = false; // Flag to break loop
@@ -47,7 +56,12 @@ public class Validator {
         return num;
     }
 
-    public static String requestValidString (String prompt, String type, int min) {
+    // Overloaded requestValidDouble method that only requires minimum value argument
+    public static double requestValidDouble(String prompt, double min) {
+        return requestValidDouble(prompt, min, Double.MAX_VALUE);
+    }
+
+    public static String requestValidString (String prompt, String type, int min, int max) {
         /*
         Type argument accepts only the following as String:
         - name
@@ -109,6 +123,11 @@ public class Validator {
             }
         }
         return string;
+    }
+
+    // Overloaded requestValidString method that only requires minimum value argument
+    public static String requestValidString(String prompt, String type, int min) {
+        return requestValidString(prompt, type, min, Integer.MAX_VALUE);
     }
 
     // requestValidString requests and validates a string

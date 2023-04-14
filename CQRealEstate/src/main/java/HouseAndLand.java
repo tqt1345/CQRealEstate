@@ -1,4 +1,6 @@
 public class HouseAndLand extends Land {
+
+    private static final String type = "House and Land";
     private double constructedArea;
     private int bedrooms;
     private int toilets;

@@ -1,6 +1,7 @@
 public class Land {
     private int propertyId;
     private static int lastPropertyId = 1;
+    private static final String type = "Land";
     private int lotNumber;
     private String address;
     private double landArea;

@@ -11,10 +11,91 @@ public class Main {
     ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
     ArrayList<Seller> sellerList = new ArrayList<Seller>();
     // Interactive menu
-    public void menu() {
-        
+
+    public void welcomeMessage() {
+        System.out.println("Welcome to CQ Real Estate" +
+                "\n Programmer: Tarique Turnbull" +
+                "\n Date: 10/10/2020" +
+                "\n Course: " +
+                "\n Assessment: " );
     }
-    
+
+    public void exitMessage() {
+        System.out.println("Thank you for using the program");
+    }
+    public void menu() {
+        Boolean isTrue = true;
+
+        while (isTrue) {
+            System.out.println("Welcome to CQ Real Estate" +
+                    "\nPlease select one of options:\n" +
+                    "\n1. Create a new Land entry" +
+                    "\n2. Create a new house and land entry" +
+                    "\n3. Create a new Buyer entry" +
+                    "\n4. Create a new Seller entry" +
+                    "\n5. Display all Land entries" +
+                    "\n6. Display all house and land entries" +
+                    "\n7. Display all buyer entries" +
+                    "\n8. Display all seller entries" +
+                    "\n9. Quit");
+
+            System.out.println();
+            int input = Validator.requestValidInt("Enter your choice: ", 0, 10);
+            switch (input) {
+                case 1:
+                    System.out.println("Creating a new Land entry");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    addLand();
+                    moveOn(); // Move on to the next part of the program after completion
+                    break;
+                case 2:
+                    System.out.println("Creating a new house and land entry");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    addHouseAndLand();
+                    moveOn();
+                    break;
+                case 3:
+                    System.out.println("Creating a new Buyer entry");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    addBuyer();
+                    moveOn();
+                    break;
+                case 4:
+                    System.out.println("Creating a new Seller entry");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    addSeller();
+                    moveOn();
+                    break;
+                case 5:
+                    System.out.println("Displaying all Land entries");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    displayLands();
+                    moveOn();
+                    break;
+                case 6:
+                    System.out.println("Displaying all house and land entries");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    displayHouseAndLands();
+                    moveOn();
+                    break;
+                case 7:
+                    System.out.println("Displaying all buyer entries");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    displayBuyers();
+                    moveOn();
+                    break;
+                case 8:
+                    System.out.println("Displaying all seller entries");
+                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    displaySellers();
+                    moveOn();
+                    break;
+                case 9:
+                    isTrue = false;
+                    break;
+            }
+        }
+    }
     // Add a new Land object to the array
     public void addLand() {
         // Get land attributes
@@ -31,7 +112,6 @@ public class Main {
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(land);
 
-        moveOn(); // Move on to the next part of the program after completion
     }
 
     // Add a new HouseAndLand object to the array
@@ -53,7 +133,6 @@ public class Main {
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(houseAndLand);
 
-        moveOn(); // Move on to the next part of the program after completion
     }
 
     // Add a new Buyer object to the array
@@ -156,11 +235,11 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.addLand();
-        main.addHouseAndLand();
 
-        System.out.println("Total:");
-        main.displayLands();
-        main.displayHouseAndLands();
+        main.welcomeMessage();
+        main.menu();
+        main.exitMessage();
+
+        System.exit(0);
     }
 }
