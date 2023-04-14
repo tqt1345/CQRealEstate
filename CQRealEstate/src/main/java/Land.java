@@ -1,6 +1,6 @@
 public class Land {
-    private int landId;
-    private static int lastLandId = 1;
+    private int propertyId;
+    private static int lastPropertyId = 1;
     private int lotNumber;
     private String address;
     private double landArea;
@@ -9,13 +9,13 @@ public class Land {
         this.lotNumber = lotNumber;
         this.address = address;
         this.landArea = landArea;
-        this.landId = lastLandId;
-        lastLandId++;
+        this.propertyId = lastPropertyId;
+        lastPropertyId++;
     }
 
     // landId getter
     public int getLandId() {
-        return landId;
+        return propertyId;
     }
 
     // lotNumber setter and getter
@@ -47,7 +47,8 @@ public class Land {
 
     @Override
     public String toString(){
-        return "Lot number: " + lotNumber
+        return "Property ID: " + propertyId
+                + "\nLot number: " + lotNumber
                 + "\nAddress: " + address
                 + "\nLand area: " + landArea ;
     }

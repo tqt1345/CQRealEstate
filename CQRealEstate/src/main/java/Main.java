@@ -14,7 +14,7 @@ public class Main {
     public void menu() {
         
     }
-
+    
     // Add a new Land object to the array
     public void addLand() {
         // Get land attributes
@@ -40,7 +40,7 @@ public class Main {
         int lotNumber = Validator.requestValidInt("Enter the lot number", 0);
         String address = Validator.requestValidString("Enter the address", "address", 0);
         double landArea = Validator.requestValidDouble("Enter the land area", 0);
-        double constructedArea = Validator.requestValidDouble("Enter the constructed area (must be greater than: " + landArea, landArea);
+        double constructedArea = Validator.requestValidDouble("Enter the constructed area (must be greater than: " + landArea + ")", landArea);
         int bedrooms = Validator.requestValidInt("Enter the number of bedrooms", 0);
         int toilets = Validator.requestValidInt("Enter the number of toilets", 0);
 

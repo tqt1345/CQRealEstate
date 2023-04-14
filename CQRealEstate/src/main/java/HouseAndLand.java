@@ -1,6 +1,4 @@
 public class HouseAndLand extends Land {
-
-    public int houseAndLandId = 1;
     private double constructedArea;
     private int bedrooms;
     private int toilets;

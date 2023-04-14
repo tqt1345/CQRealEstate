@@ -48,18 +48,28 @@ public class Validator {
     }
 
     public static String requestValidString (String prompt, String type, int min) {
+        /*
+        Type argument accepts only the following as String:
+        - name
+        - address
+        - phone
+        This is used to modify how this method validates the input
+         */
+
+        // Get input
         Scanner input = new Scanner(System.in);
         String string = "";
         boolean isValid = false;
 
+        // Continues to request input until valid
         while (!isValid) {
             System.out.println(prompt);
             if (input.hasNextLine()) {
                 string = input.nextLine();
                 if (string.length() > 0)
                 {
-                    switch (type) {
-                        case "name":
+                    switch (type) { // Checks for different types of input based on "type" argument
+                        case "name": // Checks if input is a name
                             if (string.matches("[a-zA-Z]+")) { // Regex to check for letters only
                                 if (string.length() > min) {
                                     isValid = true;
@@ -71,14 +81,14 @@ public class Validator {
                                 System.out.println("Invalid input, no numbers, special characters, or spaces");
                                 break;
                             } continue;
-                        case "address":
+                        case "address": // Checks if input is an address
                             if (string.length() > min) {
                                 isValid = true;
                             } else {
                                 System.out.println("Invalid input, must be greater than " + min + " characters");
                                 break;
                             } continue;
-                        case "phone":
+                        case "phone": // Checks if input is a phone number
                             if (string.matches("[0-9]+")) { // Regex to check for numbers only
                                 if (string.length() == min) {
                                     isValid = true;
