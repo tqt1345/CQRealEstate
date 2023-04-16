@@ -1,16 +1,17 @@
+
 public class Sale {
     private int saleID;
     private static int lastSaleID = 1;
     private String date;
     private double soldPrice;
-    private Land Property;
+    private Land property;
     private Seller seller;
     private Buyer buyer;
 
-    public Sale(String date, double soldPrice, Land Property, Seller seller, Buyer buyer) {
+    public Sale(String date, double soldPrice, Land property, Seller seller, Buyer buyer) {
         this.date = date;
         this.soldPrice = soldPrice;
-        this.Property = Property;
+        this.property = property;
         this.seller = seller;
         this.buyer = buyer;
         this.saleID = lastSaleID;
@@ -45,12 +46,12 @@ public class Sale {
     }
 
     // Property getter and setter
-    public void setProperty(Land Property) {
-        this.Property = Property;
+    public void setProperty(Land property) {
+        this.property = property;
     }
 
     public Land getProperty() {
-        return Property;
+        return property;
     }
 
     // seller getter and setter
@@ -73,11 +74,16 @@ public class Sale {
 
     @Override
     public String toString(){
-        return "Sale ID: " + saleID
+        return "Sale info:\n"
+                + "\nSale ID: " + saleID
                 + "\nDate: " + date
-                + "\nSold price: " + soldPrice
-                + "\nProperty: " + Property
-                + "\nSeller: " + seller
-                + "\nBuyer: " + buyer;
+                + "\nSold price: " + soldPrice + "\n"
+                + Main.separator(30)
+                + "\nProperty info:\n\n" + property + "\n"
+                + Main.separator(30)
+                + "\nSeller info:\n\n" + seller + "\n"
+                + Main.separator(30)
+                + "\nBuyer info:\n\n" + buyer;
+
     }
 }

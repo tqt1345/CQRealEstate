@@ -1,6 +1,6 @@
 public class HouseAndLand extends Land {
 
-    private static final String type = "House and Land";
+    private String type = "HouseAndLand";
     private double constructedArea;
     private int bedrooms;
     private int toilets;
@@ -10,6 +10,7 @@ public class HouseAndLand extends Land {
         this.constructedArea = constructedArea;
         this.bedrooms = bedrooms;
         this.toilets = toilets;
+        this.type = type;
     }
 
     // constructedArea setter and getter
@@ -39,9 +40,19 @@ public class HouseAndLand extends Land {
         return toilets;
     }
 
+    // type getter
+    public String getType() {
+        return this.type;
+    }
+
     @Override
     public String toString(){
-        return super.toString()
+        // Note: super.toString() is not called due to a difference in property type
+        return "Property type: " + type
+                + "\n" + "Property ID: " + getLandId()
+                + "\nLot number: " + getLotNumber()
+                + "\nAddress: " + getAddress()
+                + "\nLand area: " + getLandArea()
                 + "\nConstructed area: " + constructedArea
                 + "\nBedrooms: " + bedrooms
                 + "\nToilets: " + toilets;

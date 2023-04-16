@@ -1,7 +1,7 @@
 public class Land {
     private int propertyId;
     private static int lastPropertyId = 1;
-    private static final String type = "Land";
+    private String type = "Land";
     private int lotNumber;
     private String address;
     private double landArea;
@@ -10,6 +10,7 @@ public class Land {
         this.lotNumber = lotNumber;
         this.address = address;
         this.landArea = landArea;
+        this.type = type;
         this.propertyId = lastPropertyId;
         lastPropertyId++;
     }
@@ -18,6 +19,12 @@ public class Land {
     public int getLandId() {
         return propertyId;
     }
+
+    // type getter and setter
+    public String getType() {
+        return this.type;
+    }
+
 
     // lotNumber setter and getter
     public void setLotNumber(int lotNumber) {
@@ -48,7 +55,8 @@ public class Land {
 
     @Override
     public String toString(){
-        return "Property ID: " + propertyId
+        return "Property type: " + type
+                + "\n" + "Property ID: " + propertyId
                 + "\nLot number: " + lotNumber
                 + "\nAddress: " + address
                 + "\nLand area: " + landArea ;

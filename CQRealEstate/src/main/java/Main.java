@@ -1,6 +1,6 @@
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
@@ -10,11 +10,13 @@ public class Main {
     ArrayList<HouseAndLand> houseAndLandList = new ArrayList<HouseAndLand>();
     ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
     ArrayList<Seller> sellerList = new ArrayList<Seller>();
-    // Interactive menu
+    ArrayList<Sale> saleList = new ArrayList<Sale>();
+
+
 
     public void welcomeMessage() {
         System.out.println("Welcome to CQ Real Estate" +
-                "\n Programmer: Tarique Turnbull" +
+                "\n Student: Tarique Turnbull" +
                 "\n Date: 10/10/2020" +
                 "\n Course: " +
                 "\n Assessment: " );
@@ -23,6 +25,8 @@ public class Main {
     public void exitMessage() {
         System.out.println("Thank you for using the program");
     }
+
+    // Interactive menu
     public void menu() {
         Boolean isTrue = true;
 
@@ -33,68 +37,80 @@ public class Main {
                     "\n2. Create a new house and land entry" +
                     "\n3. Create a new Buyer entry" +
                     "\n4. Create a new Seller entry" +
-                    "\n5. Display all Land entries" +
-                    "\n6. Display all house and land entries" +
-                    "\n7. Display all buyer entries" +
-                    "\n8. Display all seller entries" +
-                    "\n9. Quit");
+                    "\n5. Create a new Sale entry" +
+                    "\n6. Display all Land entries" +
+                    "\n7. Display all house and land entries" +
+                    "\n8. Display all buyer entries" +
+                    "\n9. Display all seller entries" +
+                    "\n10. Quit");
 
             System.out.println();
-            int input = Validator.requestValidInt("Enter your choice: ", 0, 10);
+            int input = Validator.requestValidInt("Enter your choice: ", 0, 11);
             switch (input) {
                 case 1:
                     System.out.println("Creating a new Land entry");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    System.out.println(separator(30));
                     addLand();
-                    moveOn(); // Move on to the next part of the program after completion
+                    moveOn(); // Waits for user input before returning to the menu
                     break;
                 case 2:
                     System.out.println("Creating a new house and land entry");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    System.out.println(separator(30));
                     addHouseAndLand();
                     moveOn();
                     break;
                 case 3:
                     System.out.println("Creating a new Buyer entry");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    System.out.println(separator(30));
                     addBuyer();
                     moveOn();
                     break;
                 case 4:
                     System.out.println("Creating a new Seller entry");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
+                    System.out.println(separator(30));
                     addSeller();
                     moveOn();
                     break;
                 case 5:
-                    System.out.println("Displaying all Land entries");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
-                    displayLands();
+                    System.out.println("Creating a new Sale entry");
+                    System.out.println(separator(30));
+                    addSale();
                     moveOn();
                     break;
                 case 6:
-                    System.out.println("Displaying all house and land entries");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
-                    displayHouseAndLands();
+                    System.out.println("Displaying all Land entries");
+                    System.out.println(separator(30));
+                    displayLands("full");
                     moveOn();
                     break;
                 case 7:
-                    System.out.println("Displaying all buyer entries");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
-                    displayBuyers();
+                    System.out.println("Displaying all house and land entries");
+                    System.out.println(separator(30));
+                    displayHouseAndLands("full");
                     moveOn();
                     break;
                 case 8:
-                    System.out.println("Displaying all seller entries");
-                    System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
-                    displaySellers();
+                    System.out.println("Displaying all buyer entries");
+                    System.out.println(separator(30));
+                    displayBuyers("full");
                     moveOn();
                     break;
                 case 9:
+                    System.out.println("Displaying all seller entries");
+                    System.out.println(separator(30));
+                    displaySellers("full");
+                    moveOn();
+                    break;
+                case 10:
                     isTrue = false;
                     break;
             }
         }
+    }
+
+    // Prints a separator line
+    public static String separator(int count) {
+        return ("*" + "~".repeat(count) + "*");
     }
     // Add a new Land object to the array
     public void addLand() {
@@ -112,6 +128,28 @@ public class Main {
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(land);
 
+    }
+
+    // Displays either brief or full details for all Land objects
+    public void displayLands(String type) {
+
+        if (landList.isEmpty()) {
+            System.out.println("No land info stored");
+            return;
+        }
+
+        switch (type) {
+            case "brief":
+                for (Land land : landList) {
+                        System.out.println("ID: " + land.getLandId() + " Type: " + land.getType()); // Displays only the ID of each object
+                }
+                break;
+            case "full":
+                for (Land land : landList) {
+                        System.out.println(land + "\n"); // Displays the toString info of each object
+                }
+                break;
+        }
     }
 
     // Add a new HouseAndLand object to the array
@@ -135,6 +173,30 @@ public class Main {
 
     }
 
+    // Displays either brief or full details for all HouseAndLand objects
+    public void displayHouseAndLands(String type){
+
+        // Error if there are no objects in the array
+        if (houseAndLandList.isEmpty()) {
+            System.out.println("No house and land info stored");
+            return;
+        }
+
+        switch (type) {
+            case "brief":
+                for (Land houseAndLand : houseAndLandList) {
+                        System.out.println("ID: " + houseAndLand.getLandId() + " Type: " + houseAndLand.getType()); // Displays only the ID of each object
+                }
+                break;
+            case "full":
+                for (Land houseAndLand : houseAndLandList) {
+                        System.out.println(houseAndLand + "\n"); // Displays the toString info of each object
+                }
+                break;
+        }
+    }
+
+
     // Add a new Buyer object to the array
     public void addBuyer() {
         // Get buyer attributes
@@ -152,7 +214,6 @@ public class Main {
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(buyer);
 
-        moveOn(); // Move on to the next part of the program after completion
     }
 
     public void addSeller() {
@@ -171,7 +232,135 @@ public class Main {
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(seller);
 
-        moveOn(); // Move on to the next part of the program after completion
+    }
+
+    public void addSale() {
+        // Checking for existing entries. Does not add a new sale if lists are empty
+        if (landList.isEmpty() && houseAndLandList.isEmpty()) {
+            System.out.println("Can't add new entry, there are no property entries");
+            return;
+        }
+        if (sellerList.isEmpty() && buyerList.isEmpty()) {
+            System.out.println("Can't add new entry, there are no seller or buyer entries");
+            return;
+        }
+        if (sellerList.isEmpty()) {
+            System.out.println("Can't add new entry, there are no seller entries");
+            return;
+        }
+        if (buyerList.isEmpty()) {
+            System.out.println("Can't add new entry, there are no buyer entries");
+            return;
+        }
+
+        // Get sale attributes
+        String date = Validator.requestValidDate();
+        double soldPrice = Validator.requestValidDouble("Enter the sold price", 0);
+        Land property = getProperty();
+        Seller seller = getSeller();
+        Buyer buyer = getBuyer();
+
+        // Create new Sale object and add it to the array
+        Sale sale = new Sale(date, soldPrice, property, seller, buyer);
+        saleList.add(sale);
+
+        clearConsole();
+        System.out.println("You have created a new entry with the following details:\n");
+        System.out.println(sale);
+
+    }
+
+
+    // Returns a buyer object depending on the ID entered
+    public Buyer getBuyer() {
+
+        System.out.println("Select a buyer ID from below:\n");
+        displayBuyers("brief");
+
+        // Continue to request buyer ID until correct
+        while (true) {
+            int input = Validator.requestValidInt("Enter the ID of the buyer", 0); // Request buyer ID
+            for (Buyer buyer : buyerList) {
+                if (buyer.getClientID() == input) { // Checks if inputted ID exists in the array
+                    System.out.println("You have selected a buyer with the following info: \n" +
+                            buyer + "\n");
+                    return buyer;
+                }
+            }
+            System.out.println("Buyer not found with ID " + input);
+        }
+    }
+
+    // Returns a seller object depending on the ID entered
+    public Seller getSeller() {
+        System.out.println("Select a seller ID from below:\n");
+        displaySellers("brief");
+
+        // Continue to request seller ID until correct
+        while (true) {
+            int input = Validator.requestValidInt("Enter the ID of the seller", 0);
+            for (Seller seller : sellerList) {
+                if (seller.getClientID() == input) { // Checks if inputted ID exists in the array
+                    System.out.println("You have selected a seller with the following info: \n" +
+                            seller + "\n");
+                    return seller;
+                }
+            }
+            System.out.println("Seller not found with ID " + input);
+        }
+    }
+
+    // Returns a land object depending on the ID entered
+    public Land getProperty() {
+        int propertyTypeChoice = 0;
+
+        while (true) {
+            System.out.println("Select the property type being sold:\n");
+            System.out.println("1. Land");
+            System.out.println("2. House and Land");
+            propertyTypeChoice = Validator.requestValidInt("Enter your choice: ", 0,3);
+
+            switch (propertyTypeChoice) {
+                case 1:
+                    if (landList.isEmpty()) {
+                        System.out.println("Invalid, no land entries");
+                        continue;
+                    } else {
+                        while (true) {
+                            System.out.println("Select the land from the list below\n");
+                            displayLands("brief");
+                            int input = Validator.requestValidInt("Enter the ID of the land", 0);
+                            for (Land land : landList) {
+                                if (land.getLandId() == input) { // Checks if inputted ID exists in the array
+                                    System.out.println("You have selected a land with the following info: \n\n" +
+                                            land + "\n");
+                                    return land;
+                                }
+                            }
+                            System.out.println("Land not found with ID " + input + "\n");
+                        }
+                    }
+                case 2:
+                    if (houseAndLandList.isEmpty()) {
+                        System.out.println("Invalid, no house and land entries");
+                        continue;
+                    } else {
+                        while (true) {
+                            System.out.println("Select the house and land from the list below\n");
+                            displayHouseAndLands("brief");
+                            int input = Validator.requestValidInt("Enter the ID of the house and land", 0);
+                            for (HouseAndLand houseAndLand : houseAndLandList) {
+                                if (houseAndLand.getLandId() == input) { // Checks if inputted ID exists in the array
+                                    System.out.println("You have selected a house and land with the following info: \n\n" +
+                                            houseAndLand + "\n");
+                                    return houseAndLand;
+                                }
+                            }
+                            System.out.println("House and land not found with ID " + input + "\n");
+                        }
+                    }
+            }
+        }
     }
 
     public void moveOn() {
@@ -180,42 +369,50 @@ public class Main {
         clearConsole();
     }
 
-    public void displayLands() {
-        if (landList.isEmpty()){
-            System.out.println("No land info stored");
-        } else {
-            for (Land land : landList) {
-                System.out.println(land + "\n");
-            }
-        }
-    }
-    public void displayHouseAndLands(){
-        if (houseAndLandList.isEmpty()){
-            System.out.println("No HouseAndLand info stored");
-        } else {
-            for (HouseAndLand houseAndLand : houseAndLandList) {
-                System.out.println(houseAndLand + "\n");
-            }
-        }
-    }
 
-    public void displayBuyers(){
+    // Displays either brief or full details for all Buyer objects
+    public void displayBuyers(String type){
         if (buyerList.isEmpty()){
             System.out.println("No buyer info stored");
-        } else {
-            for (Buyer buyer : buyerList) {
-                System.out.println(buyer + "\n");
-            }
+            return;
+        }
+
+        switch (type) {
+            case "brief":
+                for (Buyer buyer : buyerList) {
+                    System.out.println("ID: " + buyer.getClientID()
+                            + ", Name: " + buyer.getFirstName()
+                            + ", Type: " + buyer.getClientType()); // Displays only the ID of each object
+                }
+                break;
+            case "full":
+                for (Buyer buyer : buyerList) {
+                    System.out.println(buyer + "\n"); // Displays the toString info of each object
+                }
+                break;
         }
     }
 
-    public void displaySellers(){
+    // Displays either brief or full details for all Seller objects
+    public void displaySellers(String type){
         if (sellerList.isEmpty()){
             System.out.println("No seller info stored");
-        } else {
-            for (Seller seller : sellerList) {
-                System.out.println(seller + "\n");
-            }
+            return;
+        }
+
+        switch (type) {
+            case "brief":
+                for (Seller seller : sellerList) {
+                    System.out.println("ID: " + seller.getClientID()
+                            + ", Name: " + seller.getFirstName()
+                            + ", Type: " + seller.getClientType()); // Displays only the ID of each object
+                }
+                break;
+            case "full":
+                for (Seller seller : sellerList) {
+                    System.out.println(seller + "\n"); // Displays the toString info of each object
+                }
+                break;
         }
     }
 
@@ -233,6 +430,10 @@ public class Main {
         System.out.flush();
     }
 
+    public void testMethod () {
+
+
+    }
     public static void main(String[] args) {
         Main main = new Main();
 

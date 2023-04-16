@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 public class Validator {
     // requestValidInt requests and validates an integer
@@ -61,6 +63,7 @@ public class Validator {
         return requestValidDouble(prompt, min, Double.MAX_VALUE);
     }
 
+    // requestValidString requests and validates a string
     public static String requestValidString (String prompt, String type, int min, int max) {
         /*
         Type argument accepts only the following as String:
@@ -125,6 +128,34 @@ public class Validator {
         return string;
     }
 
+    // requestValidDate requests, validates and converts a date into a String
+    public static String requestValidDate () {
+
+        Scanner input = new Scanner(System.in);
+        LocalDate date = null;
+        String formattedDate = "";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Boolean isValid = false;
+
+        // Continues to request date until valid
+        while (!isValid) {
+            System.out.println("Enter a date in the format (dd/mm/yyyy)");
+            try { // Will assign date if input is valid
+                date = LocalDate.parse(input.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy")); //
+                formattedDate = date.format(formatter); // Format the date into a string
+                isValid = true;
+            } catch (Exception e) { // Error message is displayed when input is invalid
+                System.out.println("Invalid input, must be in the format: (dd/mm/yyyy)");
+            }
+        }
+        return formattedDate;
+    }
+
+    public static String convertDateToString(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = date.format(formatter);
+        return formattedDate;
+    }
     // Overloaded requestValidString method that only requires minimum value argument
     public static String requestValidString(String prompt, String type, int min) {
         return requestValidString(prompt, type, min, Integer.MAX_VALUE);

@@ -1,9 +1,15 @@
-public class Buyer extends Client{
-    // Buyer constructor
+public class Buyer extends Client {
 
-    private static final String clientType = "Buyer";
+    private String clientType = "Buyer";
+
+    // Buyer constructor
     public Buyer(String firstName, String lastName, String address, String phoneNumber) {
         super(firstName, lastName,address, phoneNumber);
+        this.clientType = clientType;
+    }
+
+    public String getClientType() {
+        return this.clientType;
     }
 
     @Override
