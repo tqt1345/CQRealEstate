@@ -78,11 +78,11 @@ public class Sale {
                 + "\nSale ID: " + saleID
                 + "\nDate: " + date
                 + "\nSold price: " + soldPrice + "\n"
-                + Main.separator(30)
+                + Util.separator(30)
                 + "\nProperty info:\n\n" + property + "\n"
-                + Main.separator(30)
+                + Util.separator(30)
                 + "\nSeller info:\n\n" + seller + "\n"
-                + Main.separator(30)
+                + Util.separator(30)
                 + "\nBuyer info:\n\n" + buyer;
 
     }

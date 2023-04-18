@@ -60,63 +60,63 @@ public class Main {
             switch (input) {
                 case 1:
                     System.out.println("Creating a new Land entry");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     addLand();
-                    moveOn(); // Waits for user input before returning to the menu
+                    Util.moveOn(); // Waits for user input before returning to the menu
                     break;
                 case 2:
                     System.out.println("Creating a new house and land entry");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     addHouseAndLand();
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 3:
                     System.out.println("Creating a new Buyer entry");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     addBuyer();
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 4:
                     System.out.println("Creating a new Seller entry");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     addSeller();
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 5:
                     System.out.println("Creating a new Sale entry");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     addSale();
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 6:
                     System.out.println("Displaying all Land entries");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     displayLands("full");
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 7:
                     System.out.println("Displaying all house and land entries");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     displayHouseAndLands("full");
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 8:
                     System.out.println("Displaying all buyer entries");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     displayBuyers("full");
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 9:
                     System.out.println("Displaying all seller entries");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     displaySellers("full");
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 10:
                     System.out.println("Searching for a Sale entry");
-                    System.out.println(separator(30));
+                    System.out.println(Util.separator(30));
                     searchSales();
-                    moveOn();
+                    Util.moveOn();
                     break;
                 case 11:
                     isTrue = false;
@@ -125,10 +125,7 @@ public class Main {
         }
     }
 
-    // Prints a separator line
-    public static String separator(int count) {
-        return ("*" + "~".repeat(count) + "*");
-    }
+
     // Add a new Land object to the array
     public void addLand() {
         // Get land attributes
@@ -141,7 +138,7 @@ public class Main {
         landList.add(land);
 
         // Display inputted details for the newly created land object
-        clearConsole();
+        Util.clearConsole();
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(land);
 
@@ -184,7 +181,7 @@ public class Main {
         houseAndLandList.add(houseAndLand);
 
         // Display inputted details for the newly created land object
-        clearConsole();
+        Util.clearConsole();
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(houseAndLand);
 
@@ -227,7 +224,7 @@ public class Main {
         buyerList.add(buyer);
 
         // Display inputted details for the newly created buyer object
-        clearConsole();
+        Util.clearConsole();
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(buyer);
 
@@ -245,7 +242,7 @@ public class Main {
         sellerList.add(seller);
 
         // Display inputted details for the newly created seller object
-        clearConsole();
+        Util.clearConsole();
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(seller);
 
@@ -281,7 +278,7 @@ public class Main {
         Sale sale = new Sale(date, soldPrice, property, seller, buyer);
         saleList.add(sale);
 
-        clearConsole();
+        Util.clearConsole();
         System.out.println("You have created a new entry with the following details:\n");
         System.out.println(sale);
 
@@ -426,14 +423,6 @@ public class Main {
         }
     }
 
-    // Waits for input, then clears the console. Used to separate display output for different parts of program
-    public void moveOn() {
-        System.out.println();
-        awaitInput();
-        clearConsole();
-    }
-
-
     // Displays either brief or full details for all Buyer objects
     public void displayBuyers(String type){
         if (buyerList.isEmpty()){
@@ -479,22 +468,6 @@ public class Main {
                 }
                 break;
         }
-    }
-
-    // Prompts the user to press enter to continue the program
-    public void awaitInput(){
-        System.out.println("Press enter to continue");
-        try { // Tries to wait for user input
-            System.in.read();
-        } catch (IOException e) { // Catches any errors
-            e.printStackTrace();
-        }
-    }
-
-    // Clears the console
-    public void clearConsole() {
-        System.out.print("\033[H\033[2J"); // An ANSI escape sequence to clear the console
-        System.out.flush(); //
     }
 
     // Main method to run the program
