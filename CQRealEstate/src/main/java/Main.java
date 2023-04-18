@@ -1,6 +1,16 @@
+// Programmer: Tarique Turnbull
+// StudentID:
+// Date:
+// Course:
+// Assessment:
+
+/*
+Please note: External resources such Stackoverflow, Youtube tutorials,
+web articles, and artificial intelligence were used to help brainstorm and debug code in this
+program.
+ */
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
@@ -42,7 +52,8 @@ public class Main {
                     "\n7. Display all house and land entries" +
                     "\n8. Display all buyer entries" +
                     "\n9. Display all seller entries" +
-                    "\n10. Quit");
+                    "\n10. Search for a Sale entry" +
+                    "\n11. Quit");
 
             System.out.println();
             int input = Validator.requestValidInt("Enter your choice: ", 0, 11);
@@ -102,6 +113,12 @@ public class Main {
                     moveOn();
                     break;
                 case 10:
+                    System.out.println("Searching for a Sale entry");
+                    System.out.println(separator(30));
+                    searchSales();
+                    moveOn();
+                    break;
+                case 11:
                     isTrue = false;
                     break;
             }
@@ -270,6 +287,51 @@ public class Main {
 
     }
 
+    public void displaySales(String type) {
+        if (saleList.isEmpty()) {
+            System.out.println("No sales info stored");
+            return;
+        }
+
+        switch (type) {
+            case "brief":
+                for (Sale sale : saleList) {
+                    System.out.println("ID: " + sale.getSaleID()
+                            + " Date: " + sale.getDate()
+                            + " Sold Price: " + sale.getSoldPrice()); // Displays only the ID of each object
+                }
+                break;
+            case "full":
+                for (Sale sale : saleList) {
+                    System.out.println(sale + "\n"); // Displays the toString info of each object
+                }
+                break;
+        }
+    }
+
+    // Displays sale info based on user inputted saleId
+    public void searchSales() {
+        if (saleList.isEmpty()) {
+            System.out.println("No sales info stored");
+            return;
+        }
+
+        System.out.println("Select a sale ID from below:\n");
+        displaySales("brief");
+
+        // Continue to request sale ID until correct
+        while (true) {
+            int input = Validator.requestValidInt("Enter the ID of the sale", 0); // Request sale ID
+            for (Sale sale : saleList) {
+                if (sale.getSaleID() == input) { // Checks if inputted ID exists in the array
+                    System.out.println("You have selected a sale with the following info: \n" +
+                            sale + "\n");
+                    return;
+                }
+            }
+        }
+
+    }
 
     // Returns a buyer object depending on the ID entered
     public Buyer getBuyer() {
@@ -310,6 +372,7 @@ public class Main {
         }
     }
 
+
     // Returns a land object depending on the ID entered
     public Land getProperty() {
         int propertyTypeChoice = 0;
@@ -320,13 +383,13 @@ public class Main {
             System.out.println("2. House and Land");
             propertyTypeChoice = Validator.requestValidInt("Enter your choice: ", 0,3);
 
-            switch (propertyTypeChoice) {
+            switch (propertyTypeChoice) { // User selects property type to be sold
                 case 1:
-                    if (landList.isEmpty()) {
+                    if (landList.isEmpty()) { // Can't add land if the list is empty
                         System.out.println("Invalid, no land entries");
                         continue;
                     } else {
-                        while (true) {
+                        while (true) { // If landLisnt isnt empty, requests user select landId
                             System.out.println("Select the land from the list below\n");
                             displayLands("brief");
                             int input = Validator.requestValidInt("Enter the ID of the land", 0);
@@ -340,7 +403,7 @@ public class Main {
                             System.out.println("Land not found with ID " + input + "\n");
                         }
                     }
-                case 2:
+                case 2: // Same as case 1 but for house and land
                     if (houseAndLandList.isEmpty()) {
                         System.out.println("Invalid, no house and land entries");
                         continue;
@@ -363,6 +426,7 @@ public class Main {
         }
     }
 
+    // Waits for input, then clears the console. Used to separate display output for different parts of program
     public void moveOn() {
         System.out.println();
         awaitInput();
@@ -395,12 +459,13 @@ public class Main {
 
     // Displays either brief or full details for all Seller objects
     public void displaySellers(String type){
+        // Checks if the sellerList is empty
         if (sellerList.isEmpty()){
             System.out.println("No seller info stored");
             return;
         }
 
-        switch (type) {
+        switch (type) { // Displays either brief or full details for all Seller objects
             case "brief":
                 for (Seller seller : sellerList) {
                     System.out.println("ID: " + seller.getClientID()
@@ -416,24 +481,23 @@ public class Main {
         }
     }
 
+    // Prompts the user to press enter to continue the program
     public void awaitInput(){
         System.out.println("Press enter to continue");
-        try {
+        try { // Tries to wait for user input
             System.in.read();
-        } catch (IOException e) {
+        } catch (IOException e) { // Catches any errors
             e.printStackTrace();
         }
     }
 
+    // Clears the console
     public void clearConsole() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        System.out.print("\033[H\033[2J"); // An ANSI escape sequence to clear the console
+        System.out.flush(); //
     }
 
-    public void testMethod () {
-
-
-    }
+    // Main method to run the program
     public static void main(String[] args) {
         Main main = new Main();
 
