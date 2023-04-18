@@ -1,8 +1,8 @@
 // Programmer: Tarique Turnbull
-// StudentID:
-// Date:
-// Course:
-// Assessment:
+// StudentID: 12177936
+// Date: 18/04/2023
+// Course: COIT11134 Object-Oriented Programming
+// Assessment: Practical Assessment 1
 
 /*
 Please note: External resources such Stackoverflow, Youtube tutorials,
@@ -10,7 +10,6 @@ web articles, and artificial intelligence were used to help brainstorm and debug
 program.
  */
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
@@ -22,23 +21,11 @@ public class Main {
     ArrayList<Seller> sellerList = new ArrayList<Seller>();
     ArrayList<Sale> saleList = new ArrayList<Sale>();
 
-
-
-    public void welcomeMessage() {
-        System.out.println("Welcome to CQ Real Estate" +
-                "\n Student: Tarique Turnbull" +
-                "\n Date: 10/10/2020" +
-                "\n Course: " +
-                "\n Assessment: " );
-    }
-
-    public void exitMessage() {
-        System.out.println("Thank you for using the program");
-    }
-
     // Interactive menu
     public void menu() {
-        Boolean isTrue = true;
+        Boolean isTrue = true; // Flag determines if user has quit
+
+        // Continues to display the menu until user selects quit option
 
         while (isTrue) {
             System.out.println("Welcome to CQ Real Estate" +
@@ -57,7 +44,7 @@ public class Main {
 
             System.out.println();
             int input = Validator.requestValidInt("Enter your choice: ", 0, 11);
-            switch (input) {
+            switch (input) { // Performs actions based on use selection
                 case 1:
                     System.out.println("Creating a new Land entry");
                     System.out.println(Util.separator(30));
@@ -146,13 +133,13 @@ public class Main {
 
     // Displays either brief or full details for all Land objects
     public void displayLands(String type) {
-
+        // Checks if the array is empty
         if (landList.isEmpty()) {
             System.out.println("No land info stored");
             return;
         }
 
-        switch (type) {
+        switch (type) { // Brief or full details shown depending on type argument
             case "brief":
                 for (Land land : landList) {
                         System.out.println("ID: " + land.getLandId() + " Type: " + land.getType()); // Displays only the ID of each object
@@ -196,7 +183,7 @@ public class Main {
             return;
         }
 
-        switch (type) {
+        switch (type) { // Brief or full details shown depending on type argument
             case "brief":
                 for (Land houseAndLand : houseAndLandList) {
                         System.out.println("ID: " + houseAndLand.getLandId() + " Type: " + houseAndLand.getType()); // Displays only the ID of each object
@@ -284,13 +271,15 @@ public class Main {
 
     }
 
+    // Displays either brief or full details for all Sale objects
     public void displaySales(String type) {
+        // Checks if list is empty
         if (saleList.isEmpty()) {
             System.out.println("No sales info stored");
             return;
         }
 
-        switch (type) {
+        switch (type) { // Brief or full details shown depending on type argument
             case "brief":
                 for (Sale sale : saleList) {
                     System.out.println("ID: " + sale.getSaleID()
@@ -308,6 +297,7 @@ public class Main {
 
     // Displays sale info based on user inputted saleId
     public void searchSales() {
+        // Checks if list is empty
         if (saleList.isEmpty()) {
             System.out.println("No sales info stored");
             return;
@@ -425,12 +415,13 @@ public class Main {
 
     // Displays either brief or full details for all Buyer objects
     public void displayBuyers(String type){
+        // Checks if the buyerList is empty
         if (buyerList.isEmpty()){
             System.out.println("No buyer info stored");
             return;
         }
 
-        switch (type) {
+        switch (type) { // Shows brief or full details depending on type argument
             case "brief":
                 for (Buyer buyer : buyerList) {
                     System.out.println("ID: " + buyer.getClientID()
@@ -454,7 +445,7 @@ public class Main {
             return;
         }
 
-        switch (type) { // Displays either brief or full details for all Seller objects
+        switch (type) { // Shows brief or full details depending on type argument
             case "brief":
                 for (Seller seller : sellerList) {
                     System.out.println("ID: " + seller.getClientID()
@@ -470,6 +461,19 @@ public class Main {
         }
     }
 
+    // Shows a welcome message
+    public void welcomeMessage() {
+        System.out.println("Welcome to CQ Real Estate" +
+                "\n Student: Tarique Turnbull" +
+                "\n Date: 10/10/2020" +
+                "\n Course: " +
+                "\n Assessment: " );
+    }
+
+    // Shows an exit message
+    public void exitMessage() {
+        System.out.println("Thank you for using the program");
+    }
     // Main method to run the program
     public static void main(String[] args) {
         Main main = new Main();

@@ -46,7 +46,11 @@ public class Validator {
             if (input.hasNextDouble()) { // Checks if input is a double
                 num = input.nextDouble();
                 if (num > min) { // Checks if number is greater than minimum needed
-                    isValid = true; // Breaks the loop if all conditions are met
+                    if (num < max) { // Checks if number is less than maximum needed
+                        isValid = true; // Breaks the loop if all conditions are met
+                    } else {
+                        System.out.println("Invalid input, must be less than: " + max);
+                    }
                 } else {
                     System.out.println("Invalid input, must be greater than: " + min);
                 }
