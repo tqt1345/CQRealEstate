@@ -158,8 +158,8 @@ public class Main {
         // Get houseAndLand attributes
         int lotNumber = Validator.requestValidInt("Enter the lot number", 0);
         String address = Validator.requestValidString("Enter the address", "address", 0);
-        double landArea = Validator.requestValidDouble("Enter the land area", 0);
-        double constructedArea = Validator.requestValidDouble("Enter the constructed area (must be greater than: " + landArea + ")", landArea);
+        double constructedArea = Validator.requestValidDouble("Enter the constructed area", 0);
+        double landArea = Validator.requestValidDouble("Enter the land area (must be greater than " + constructedArea + ")", constructedArea);
         int bedrooms = Validator.requestValidInt("Enter the number of bedrooms", 0);
         int toilets = Validator.requestValidInt("Enter the number of toilets", 0);
 
@@ -219,6 +219,7 @@ public class Main {
 
     public void addSeller() {
         // Get seller attributes
+        String test = Validator.requestValidString("test", "name",0);
         String firstname = Validator.requestValidString("Enter the seller's first name", "name", 0);
         String lastname = Validator.requestValidString("Enter the seller's last name", "name", 0);
         String address = Validator.requestValidString("Enter the seller's address", "address",0);

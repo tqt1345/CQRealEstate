@@ -132,6 +132,10 @@ public class Validator {
         return string;
     }
 
+    // Overloaded requestValidString method that only requires minimum value argument
+    public static String requestValidString(String prompt, String type, int min) {
+        return requestValidString(prompt, type, min, Integer.MAX_VALUE);
+    }
     // requestValidDate requests, validates and converts a date into a String
     public static String requestValidDate () {
 
@@ -153,16 +157,6 @@ public class Validator {
             }
         }
         return formattedDate;
-    }
-
-    public static String convertDateToString(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String formattedDate = date.format(formatter);
-        return formattedDate;
-    }
-    // Overloaded requestValidString method that only requires minimum value argument
-    public static String requestValidString(String prompt, String type, int min) {
-        return requestValidString(prompt, type, min, Integer.MAX_VALUE);
     }
 
     // requestValidString requests and validates a string
