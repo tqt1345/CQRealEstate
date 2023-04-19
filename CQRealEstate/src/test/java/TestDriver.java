@@ -22,7 +22,7 @@ public class TestDriver {
         // displayBothPropertiesTest.main(args);
         // DisplayBuyersTest.main(args);
         // DisplaySellersTest.main(args);
-         searchSalesTest.main(args);
+         //searchSalesTest.main(args);
 
         // ************************
         // Tests for data validation
@@ -32,6 +32,7 @@ public class TestDriver {
         // requestValidStringTest.main(args);
         // requestValidDateTest.main(args);
 
+         menuTest.main(args);
 
 
     }
@@ -270,10 +271,12 @@ public class TestDriver {
         }
     }
 
-
-
-
-
+    public static class menuTest {
+        public static void main(String[] args) {
+            Main main = new Main();
+            main.menu();
+        }
+    }
 }
 
 

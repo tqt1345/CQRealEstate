@@ -15,32 +15,34 @@ import java.util.ArrayList;
 public class Main {
 
     // Object array lists
-    ArrayList<Land> landList = new ArrayList<Land>();
-    ArrayList<HouseAndLand> houseAndLandList = new ArrayList<HouseAndLand>();
-    ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
-    ArrayList<Seller> sellerList = new ArrayList<Seller>();
-    ArrayList<Sale> saleList = new ArrayList<Sale>();
+    ArrayList<Land> landList = new ArrayList<>();
+    ArrayList<HouseAndLand> houseAndLandList = new ArrayList<>();
+    ArrayList<Buyer> buyerList = new ArrayList<>();
+    ArrayList<Seller> sellerList = new ArrayList<>();
+    ArrayList<Sale> saleList = new ArrayList<>();
 
     // Interactive menu
     public void menu() {
-        Boolean isTrue = true; // Flag determines if user has quit
+        boolean isTrue = true; // Flag determines if user has quit
 
         // Continues to display the menu until user selects quit option
 
         while (isTrue) {
-            System.out.println("Welcome to CQ Real Estate" +
-                    "\nPlease select one of options:\n" +
-                    "\n1. Create a new Land entry" +
-                    "\n2. Create a new house and land entry" +
-                    "\n3. Create a new Buyer entry" +
-                    "\n4. Create a new Seller entry" +
-                    "\n5. Create a new Sale entry" +
-                    "\n6. Display all Land entries" +
-                    "\n7. Display all house and land entries" +
-                    "\n8. Display all buyer entries" +
-                    "\n9. Display all seller entries" +
-                    "\n10. Search for a Sale entry" +
-                    "\n11. Quit");
+            System.out.println("""
+                    Welcome to CQ Real Estate
+                    Please select one of options:
+
+                    1. Create a new Land entry
+                    2. Create a new house and land entry
+                    3. Create a new Buyer entry
+                    4. Create a new Seller entry
+                    5. Create a new Sale entry
+                    6. Display all Land entries
+                    7. Display all house and land entries
+                    8. Display all buyer entries
+                    9. Display all seller entries
+                    10. Search for a Sale entry
+                    11. Quit""");
 
             System.out.println();
             int input = Validator.requestValidInt("Enter your choice: ", 0, 11);
@@ -219,7 +221,6 @@ public class Main {
 
     public void addSeller() {
         // Get seller attributes
-        String test = Validator.requestValidString("test", "name",0);
         String firstname = Validator.requestValidString("Enter the seller's first name", "name", 0);
         String lastname = Validator.requestValidString("Enter the seller's last name", "name", 0);
         String address = Validator.requestValidString("Enter the seller's address", "address",0);
@@ -363,7 +364,7 @@ public class Main {
 
     // Returns a land object depending on the ID entered
     public Land getProperty() {
-        int propertyTypeChoice = 0;
+        int propertyTypeChoice;
 
         while (true) {
             System.out.println("Select the property type being sold:\n");
@@ -394,7 +395,6 @@ public class Main {
                 case 2: // Same as case 1 but for house and land
                     if (houseAndLandList.isEmpty()) {
                         System.out.println("Invalid, no house and land entries");
-                        continue;
                     } else {
                         while (true) {
                             System.out.println("Select the house and land from the list below\n");
@@ -464,11 +464,12 @@ public class Main {
 
     // Shows a welcome message
     public void welcomeMessage() {
-        System.out.println("Welcome to CQ Real Estate" +
-                "\n Student: Tarique Turnbull" +
-                "\n Date: 10/10/2020" +
-                "\n Course: " +
-                "\n Assessment: " );
+        System.out.println("""
+                Welcome to CQ Real Estate
+                 Student: Tarique Turnbull
+                 Date: 10/10/2020
+                 Course:\s
+                 Assessment:\s""");
     }
 
     // Shows an exit message
