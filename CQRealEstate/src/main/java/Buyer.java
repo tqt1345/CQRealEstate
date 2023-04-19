@@ -8,9 +8,9 @@ public class Buyer extends Client {
         this.clientType = clientType;
     }
 
-    public String getClientType() {
-        return this.clientType;
-    }
+    // clientType getter and setter
+    public String getClientType() {return this.clientType;}
+    public void setClientType(String clientType) {this.clientType = clientType;}
 
     @Override
     public String toString() {

@@ -15,43 +15,17 @@ public class Land {
         lastPropertyId++;
     }
 
-    // landId getter
-    public int getLandId() {
-        return propertyId;
-    }
+    // Getters
+    public int getLandId() {return propertyId;}
+    public String getType() {return this.type;}
+    public int getLotNumber() {return lotNumber;}
+    public String getAddress() {return address;}
+    public double getLandArea() {return landArea;}
 
-    // type getter and setter
-    public String getType() {
-        return this.type;
-    }
-
-
-    // lotNumber setter and getter
-    public void setLotNumber(int lotNumber) {
-        this.lotNumber = lotNumber;
-    }
-
-    public int getLotNumber() {
-        return lotNumber;
-    }
-
-    // address setter and getter
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    // landArea setter and getter
-    public void setLandArea(double landArea) {
-        this.landArea = landArea;
-    }
-
-    public double getLandArea() {
-        return landArea;
-    }
+    // Setters
+    public void setLotNumber(int lotNumber) {this.lotNumber = lotNumber;}
+    public void setAddress(String address) {this.address = address;}
+    public void setLandArea(double landArea) {this.landArea = landArea;}
 
     @Override
     public String toString(){

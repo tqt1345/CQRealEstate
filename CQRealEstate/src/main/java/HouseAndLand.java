@@ -13,37 +13,17 @@ public class HouseAndLand extends Land {
         this.type = type;
     }
 
-    // constructedArea setter and getter
-    public void setConstructedArea(double constructedArea) {
-        this.constructedArea = constructedArea;
-    }
+    // Getters
+    public double getConstructedArea() {return constructedArea;}
+    public int getBedrooms() {return bedrooms;}
+    public int getToilets() {return toilets;}
+    public String getType() {return this.type;}
 
-    public double getConstructedArea() {
-        return constructedArea;
-    }
-
-    // bedrooms setter and getter
-    public void setBedrooms(int bedrooms) {
-        this.bedrooms = bedrooms;
-    }
-
-    public int getBedrooms() {
-        return bedrooms;
-    }
-
-    // toilets setter and getter
-    public void setToilets(int toilets) {
-        this.toilets = toilets;
-    }
-
-    public int getToilets() {
-        return toilets;
-    }
-
-    // type getter
-    public String getType() {
-        return this.type;
-    }
+    // Setters
+    public void setConstructedArea(double constructedArea) {this.constructedArea = constructedArea;}
+    public void setBedrooms(int bedrooms) {this.bedrooms = bedrooms;}
+    public void setToilets(int toilets) {this.toilets = toilets;}
+    public void setType(String type) {this.type = type;}
 
     @Override
     public String toString(){

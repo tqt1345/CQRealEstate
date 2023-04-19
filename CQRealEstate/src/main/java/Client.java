@@ -19,47 +19,18 @@ public abstract class Client {
     }
 
     // Setters
-    public void setClientID(int clientID) {
-        this.clientID = clientID;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    public void setClientID(int clientID) {this.clientID = clientID;}
+    public void setFirstName(String firstName) {this.firstName = firstName;}
+    public void setLastName(String lastName) {this.lastName = lastName;}
+    public void setAddress(String address) {this.address = address;}
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
     // Getters
-    public int getClientID() {
-        return clientID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
+    public int getClientID() {return clientID;}
+    public String getFirstName() {return firstName;}
+    public String getLastName() {return lastName;}
+    public String getAddress() {return address;}
+    public String getPhoneNumber() {return phoneNumber;}
 
     // toString method to describe object
     @Override
