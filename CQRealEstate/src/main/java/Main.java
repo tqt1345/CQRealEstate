@@ -1,11 +1,11 @@
 // Programmer: Tarique Turnbull
 // StudentID: 12177936
-// Date: 18/04/2023
+// Date: 19/04/2023
 // Course: COIT11134 Object-Oriented Programming
 // Assessment: Practical Assessment 1
 
 /*
-Please note: External resources such Stackoverflow, Youtube tutorials,
+Please note: External resources such Stackoverflow, YouTube tutorials,
 web articles, and artificial intelligence were used to help brainstorm and debug code in this
 program.
  */
@@ -45,7 +45,7 @@ public class Main {
                     11. Quit""");
 
             System.out.println();
-            int input = Validator.requestValidInt("Enter your choice: ", 0, 11);
+            int input = Validator.requestValidInt("Enter your choice: ", 0, 12);
             switch (input) { // Performs actions based on use selection
                 case 1:
                     System.out.println("Creating a new Land entry");
@@ -467,9 +467,9 @@ public class Main {
         System.out.println("""
                 Welcome to CQ Real Estate
                  Student: Tarique Turnbull
-                 Date: 10/10/2020
-                 Course:\s
-                 Assessment:\s""");
+                 Date: 19/04/2023
+                 Course: COIT11134 Object-Oriented Programming
+                 Assessment: Practical Assessment 1""");
     }
 
     // Shows an exit message
