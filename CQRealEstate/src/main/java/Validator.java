@@ -68,7 +68,7 @@ public class Validator {
     }
 
     // requestValidString requests and validates a string
-    public static String requestValidString (String prompt, String type, int min, int max) {
+    public static String requestValidString (String prompt, String type, int min) {
         /*
         Type argument accepts only the following as String:
         - name
@@ -132,10 +132,7 @@ public class Validator {
         return string;
     }
 
-    // Overloaded requestValidString method that only requires minimum value argument
-    public static String requestValidString(String prompt, String type, int min) {
-        return requestValidString(prompt, type, min, Integer.MAX_VALUE);
-    }
+
     // requestValidDate requests, validates and converts a date into a String
     public static String requestValidDate () {
 

@@ -1,10 +1,12 @@
 public class HouseAndLand extends Land {
 
+    // HouseAndLand attributes
     private String type = "HouseAndLand";
     private double constructedArea;
     private int bedrooms;
     private int toilets;
 
+    // HouseAndLand constructor
     public HouseAndLand(int lotNumber, String address, double landArea, double constructedArea, int bedrooms, int toilets) {
         super(lotNumber, address, landArea);
         this.constructedArea = constructedArea;

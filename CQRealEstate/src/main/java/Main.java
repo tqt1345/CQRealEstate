@@ -26,10 +26,8 @@ public class Main {
         boolean isTrue = true; // Flag determines if user has quit
 
         // Continues to display the menu until user selects quit option
-
         while (isTrue) {
             System.out.println("""
-                    Welcome to CQ Real Estate
                     Please select one of options:
 
                     1. Create a new Land entry
@@ -301,14 +299,14 @@ public class Main {
     public void searchSales() {
         // Checks if list is empty
         if (saleList.isEmpty()) {
-            System.out.println("No sales info stored");
+            System.out.println("No sale info stored");
             return;
         }
 
         System.out.println("Select a sale ID from below:\n");
         displaySales("brief");
 
-        // Continue to request sale ID until correct
+        // Continue to request sale ID until one that exists is selected
         while (true) {
             int input = Validator.requestValidInt("Enter the ID of the sale", 0); // Request sale ID
             for (Sale sale : saleList) {
@@ -366,6 +364,7 @@ public class Main {
     public Land getProperty() {
         int propertyTypeChoice;
 
+        // Continues to prompt for property selection
         while (true) {
             System.out.println("Select the property type being sold:\n");
             System.out.println("1. Land");

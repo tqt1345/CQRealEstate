@@ -11,6 +11,7 @@ public class TestDriver {
        //  addHouseAndLandTest.main(args);
        //  AddSaleTest.main(args);
        //  addBuyerTest.main(args);
+         // addSellerTest.main(args);
         // getBuyerTest.main(args);
         // getSellerTest.main(args);
         // getPropertyTest.main(args);
@@ -32,7 +33,7 @@ public class TestDriver {
         // requestValidStringTest.main(args);
         // requestValidDateTest.main(args);
 
-         menuTest.main(args);
+        // menuTest.main(args);
 
 
     }
@@ -82,6 +83,13 @@ public class TestDriver {
         public static void main(String[] args) {
             Main main = new Main();
             main.addBuyer();
+        }
+    }
+
+    public static class addSellerTest {
+        public static void main(String[] args) {
+            Main main = new Main();
+            main.addSeller();
         }
     }
 

@@ -1,5 +1,7 @@
 
 public class Sale {
+
+    // Sale attributes
     private int saleID;
     private static int lastSaleID = 1;
     private String date;
@@ -8,6 +10,7 @@ public class Sale {
     private Seller seller;
     private Buyer buyer;
 
+    // Sale constructor
     public Sale(String date, double soldPrice, Land property, Seller seller, Buyer buyer) {
         this.date = date;
         this.soldPrice = soldPrice;

@@ -1,5 +1,6 @@
 public class Buyer extends Client {
 
+    // Buyer attributes
     private String clientType = "Buyer";
 
     // Buyer constructor

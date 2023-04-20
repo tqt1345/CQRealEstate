@@ -1,4 +1,6 @@
 public class Land {
+
+    // Land attributes
     private int propertyId;
     private static int lastPropertyId = 1;
     private String type = "Land";
@@ -6,6 +8,7 @@ public class Land {
     private String address;
     private double landArea;
 
+    // Land constructor
     public Land(int lotNumber, String address, double landArea) {
         this.lotNumber = lotNumber;
         this.address = address;
